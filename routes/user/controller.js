@@ -111,7 +111,7 @@ module.exports = {
                 const user = await User.findOneAndUpdate({
                     '_id': userId
                 }, {
-                    $inc: {
+                    $max: {
                         'score': score
                     }
                 }, {new: true})
