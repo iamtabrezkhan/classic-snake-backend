@@ -4,5 +4,5 @@ const userRoute = require('../routes/user');
 
 module.exports = function(app) {
     logger.msg('loading routes...');
-    app.use('/api/user', verifyToken, userRoute(app));
+    app.use('/api/v1/user', verifyToken, userRoute(app));
 }

@@ -1,11 +1,12 @@
 {
-  "name": "node-template",
+  "name": "snake-backend",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "pushHeroku": "git push --force https://heroku:87b57ee1-6ad2-4e4d-9300-0bc89055d99d@git.heroku.com/snake-backend-1.git master"
   },
   "author": "Tabrez Khan",
   "license": "ISC",
