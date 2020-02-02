@@ -71,7 +71,7 @@ module.exports = {
         }
     },
 
-    getMe: (req, res, next) => {
+    getMe: async (req, res, next) => {
         const token = req.headers['x-token'];
         getUserFromToken(token, (user) => {
             if(!user) {
@@ -80,10 +80,15 @@ module.exports = {
                     error: 'User not logged in'
                 })
             }
-            return res.status(200).json({
-                success: true,
-                user
-            })
+            try {
+                const user = await User.findById(user.id);
+                return res.status(200).json({
+                    success: true,
+                    user
+                })
+            } catch (error) {
+                throw error
+            }
         })
     },
 
