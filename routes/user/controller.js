@@ -25,7 +25,8 @@ module.exports = {
             const userDetails = {
                 id: user._id,
                 email: user.email,
-                username: user.username
+                username: user.username,
+                score: user.score
             }
             const token = getToken(userDetails);
             return res.status(200).json({
