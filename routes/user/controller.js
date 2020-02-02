@@ -73,15 +73,15 @@ module.exports = {
 
     getMe: async (req, res, next) => {
         const token = req.headers['x-token'];
-        getUserFromToken(token, async (user) => {
-            if(!user) {
+        getUserFromToken(token, async (userDetails) => {
+            if(!userDetails) {
                 return res.status(401).json({
                     success: false,
                     error: 'User not logged in'
                 })
             }
             try {
-                const user = await User.findById(user.id);
+                const user = await User.findById(userDetails.id);
                 return res.status(200).json({
                     success: true,
                     user
