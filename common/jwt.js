@@ -19,12 +19,23 @@ module.exports = {
                 if(!decoded) {
                     return res.status(401).json({
                         success: false,
-                        error: 'Token expired'
+                        error: 'invalid token'
                     })
                 }
                 next()
             })
         }
+    },
+
+    getUserFromToken: (token, cb) => {
+        jwt.verify(token, secret, (err, user) => {
+            if(err) throw err;
+            if(!user) {
+                cb(null)
+                return
+            }
+            cb(user);
+        })
     }
 
 }
