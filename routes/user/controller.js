@@ -73,7 +73,7 @@ module.exports = {
 
     getMe: async (req, res, next) => {
         const token = req.headers['x-token'];
-        getUserFromToken(token, (user) => {
+        getUserFromToken(token, async (user) => {
             if(!user) {
                 return res.status(401).json({
                     success: false,
